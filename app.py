@@ -13,23 +13,16 @@ st.title("🎬 AI 비디오 감독")
 st.write("원하는 작업을 탭에서 선택하세요")
 
 # -----------------------
-# (공통) 사이드바: API 키 (Secrets에서 불러오기)
+# (공통) 사이드바: API 키 (사용자 직접 입력)
 # -----------------------
-st.sidebar.header("🔑 (공통) API 설정")
+st.sidebar.header("🔑 API Key 설정")
 
-# Streamlit Cloud에 배포된 버전인지 확인
-if 'OPENAI_API_KEY' in st.secrets:
-    api_key = st.secrets["OPENAI_API_KEY"]
-    st.sidebar.success("API Key가 안전하게 로드되었습니다.")
-else:
-    # 로컬 테스트용 (선택 사항)
-    st.sidebar.warning("Streamlit Cloud Secrets에 'OPENAI_API_KEY'를 설정해주세요.")
-    # 로컬에서만 임시로 키를 입력받고 싶다면, 이전 코드를 여기에 넣을 수 있습니다.
-    api_key = st.sidebar.text_input(
-        "(로컬 테스트용) OpenAI API Key를 입력하세요:",
-        type="password",
-        placeholder="sk-xxxxxxxxxxxxxxxx",
-    )
+api_key = st.sidebar.text_input(
+    "OpenAI API Key를 입력하세요:",
+    type="password",
+    placeholder="sk-xxxxxxxxxxxxxxxx",
+    help="OpenAI 웹사이트에서 발급받은 API 키를 입력하세요."
+)
 
 # -----------------------
 # (공통) V1, V2에서 사용할 프롬프트와 헬퍼 함수 정의
