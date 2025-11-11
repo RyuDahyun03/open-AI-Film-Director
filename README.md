@@ -1,1 +1,0 @@
-# open-AI-Film-Director
